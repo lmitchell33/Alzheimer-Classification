@@ -47,7 +47,17 @@ This project explores the effectiveness of **Convolutional Neural Networks (CNNs
 - Final dense softmax layer (4 outputs)
 - *See the model summary in .ipynb file for more details*
 
-## Results & Performance Comparison
+## Custom CNN Model Iterations
+| Model Update               | Kernel Size | Dropout Rate | Flattening Method       | Pooling Type                        | Accuracy | F1-Score | Comment |
+|---------------------------|-------------|--------------|--------------------------|-------------------------------------|----------|----------|---------|
+| Initial Model             | 3x3         | 0.3          | Flatten                  | Max Pooling                         | 0.900    | 0.907    | The model showed fairly significant signs of overfitting. The model also correctly classifies nearly all of the "Cognitively Normal" class. |
+| New Kernel Size           | 5x5         | 0.3          | Flatten                  | Max Pooling                         | 0.915    | 0.921    | The model appears to overfit more than in the previous iteration. Similar results in the confusion matrix. |
+| New Dropout Rate          | 5x5         | 0.5          | Flatten                  | Max Pooling                         | 0.875    | 0.882    | Compared to the two previous iterations, the model is not overfitting as much. However, the accuracy decreased. Results from the confusion matrix are similar. |
+| New Pooling Type          | 5x5         | 0.5          | Flatten                  | Average Pooling (pool_size = 2)     | 0.899    | 0.905    | The model does not appear to overfit whatsoever, however, the accuracy and F1-score are not as high as they were in previous iterations. Results from the confusion matrix are similar. |
+| New Flattening Type (Final Model) | 5x5         | 0.5          | Global Average Pooling     | Max Pooling                         | 0.916    | 0.922    | The model does not appear to overfit whatsoever, and the accuracy and F1-score are both higher than those found from the previous iterations. Confusion matrix is similar. |
+
+
+## Final Results & Performance Comparison
 | Model      | Accuracy | F1-Score |
 |------------|----------|----------|
 | Custom CNN | **0.916**   | **0.922**   |
